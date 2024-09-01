@@ -8,16 +8,15 @@
     @import url('https://fonts.googleapis.com/css2?family=K2D&family=Kanit&display=swap');
 
     /* ปุ่มหลัก */
-    /* ปุ่มหลัก */
 #main-button {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   background-image: url('https://semicon.github.io/img/logo2.png'); /* ใส่ URL รูปภาพของปุ่ม */
   background-size: cover;
-  position: fixed; /* ใช้ fixed เพื่อให้ปุ่มติดอยู่ที่ตำแหน่งที่กำหนด */
-  right: 20px; /* ระยะห่างจากขอบขวาของหน้าจอ */
-  bottom: 20px; /* ระยะห่างจากขอบล่างของหน้าจอ */
+  position: sticky; /* ใช้ sticky เพื่อให้ปุ่มติดที่ตำแหน่งที่กำหนด */
+  right: 20px; /* ระยะห่างจากขอบขวาของคอนเทนเนอร์ */
+  bottom: 20px; /* ระยะห่างจากขอบล่างของคอนเทนเนอร์ */
   z-index: 1000; /* ทำให้ปุ่มแสดงอยู่เหนือองค์ประกอบอื่น */
   cursor: pointer;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -25,6 +24,7 @@
   align-items: center;
   justify-content: center;
 }
+
 
 
     /* ป๊อปอัพ */
