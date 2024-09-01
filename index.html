@@ -46,7 +46,7 @@
 
     /* ส่วนหัวของป๊อปอัพ */
     #chat-popup-header {
-      background-color: #FA7268;
+      background-color: #0799ec;
       padding: 10px;
       color: white;
       display: flex;
@@ -138,37 +138,51 @@
       font-size: 2.5rem;
       cursor: pointer;
     }
+
+    /* สไตล์สำหรับ tooltip */
+#tooltip {
+  display: none;
+  position: fixed;
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  z-index: 1100;
+}
   </style>
 </head>
 <body>
 
   <!-- ปุ่มหลัก -->
-  <div id="main-button">
+  <div id="main-button" >
     <!-- โลโก้ปุ่มหลัก -->
     <img src="https://cdn-icons-png.flaticon.com/128/1041/1041916.png" alt="Profile" style="border-radius: 50%; width: 60px; height: 60px;">
   </div>
+<!-- Tooltip -->
+<div id="tooltip">ติดต่อสอบถาม</div>
 
   <!-- ป๊อปอัพ -->
   <div id="chat-popup">
     <div id="chat-popup-header">
       <div style="display: flex; align-items: center;">
         <!-- โลโก้ส่วนหัวด้านบน -->
-        <img src="https://semicon.github.io/img/logo2.png" alt="Logo"> 
+        <img src="https://weerasak3s.github.io/images-Project/logo-dewtablog.png" alt="Logo"> 
         <div>
-          <h3>Guru Chian</h3>
-          <p>Typically replies instantly</p>
+          <h3>DewtaBlog</h3>
+          <p>โดยทั่วไปจะตอบกลับทันที..</p>
         </div>
       </div>
       <div class="close-btn" onclick="togglePopup()">&times;</div>
     </div>
     <div id="chat-popup-content">
       <!-- โลโก้ขนาดเล็กหน้ากล่องข้อความ -->
-      <img src="https://semicon.github.io/img/logo2.png" alt="Logo"> 
+      <img src="https://weerasak3s.github.io/images-Project/logo-dewtablog.png" alt="Logo"> 
       <!-- กล่องข้อความต้อนรับ -->
-      <p>Hello! 😀<br> How may we help you?<br> Just send us a message now to get assistance.</p>
+      <p>สวัสดี! 😀<br> เราสามารถช่วยคุณได้อย่างไร?<br> ส่งข้อความถึงเราทันทีเพื่อรับความช่วยเหลือ</p>
     </div>
     <div class="chat-popup-footer">
-      <h3>Start Chat with:</h3>
+      <h3>เลือกช่องทางการสนทนา :</h3>
     </div>
     <div id="chat-popup-footer">
       <div id="line-button" class="chat-button" onclick="openLine()">
@@ -184,6 +198,26 @@
   </div>
 
   <script>
+const mainButton = document.getElementById('main-button');
+const tooltip = document.getElementById('tooltip');
+
+mainButton.addEventListener('mouseover', function (event) {
+  tooltip.style.display = 'block';
+  tooltip.style.left = `${event.pageX - tooltip.offsetWidth - 10}px`; // วางตำแหน่งทางด้านซ้ายของเมาส์
+  tooltip.style.top = `${event.pageY + 10}px`;
+});
+
+mainButton.addEventListener('mousemove', function (event) {
+  tooltip.style.left = `${event.pageX - tooltip.offsetWidth - 10}px`; // วางตำแหน่งทางด้านซ้ายของเมาส์
+  tooltip.style.top = `${event.pageY + 10}px`;
+});
+
+mainButton.addEventListener('mouseout', function () {
+  tooltip.style.display = 'none';
+});
+
+
+
     function togglePopup() {
       const popup = document.getElementById('chat-popup');
       popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
@@ -193,19 +227,19 @@
     document.getElementById('main-button').addEventListener('click', togglePopup);
 
     function openLine() {
-      const lineId = "xxxxxxxx"; // xxxxxxxx ใส่ Line ID ของคุณ
+      const lineId = "wee433021012"; // xxxxxxxx ใส่ Line ID ของคุณ
       const url = "https://line.me/ti/p/" + lineId;
       window.open(url, "_blank");
     }
 
     function openMessenger() {
-      const messengerId = "xxxxxxxx"; // xxxxxxxx ใส่ Facebook Messenger ID ของคุณ
+      const messengerId = "kruwee.3s"; // xxxxxxxx ใส่ Facebook Messenger ID ของคุณ
       const url = "https://www.messenger.com/t/" + messengerId;
       window.open(url, "_blank");
     }
 
     function openFacebook() {
-      const facebookId = "xxxxxxxxx"; // xxxxxxxx ใส่ Facebook ID ของคุณ
+      const facebookId = "kruwee.3s"; // xxxxxxxx ใส่ Facebook ID ของคุณ
       const url = "https://www.facebook.com/" + facebookId;
       window.open(url, "_blank");
     }
@@ -213,3 +247,4 @@
 
 </body>
 </html>
+
