@@ -5,7 +5,6 @@
   <title>Chat Popup</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <style>
-
     /* ปุ่มหลัก */
     #main-button {
       width: 60px;
@@ -57,10 +56,13 @@
       background-color: #0084FF;
     }
 
+    #facebook-button {
+      background-color: #3b5998;
+    }
+
     .close-btn {
       background-color: #FF6B6B;
     }
-
   </style>
 </head>
 <body>
@@ -76,13 +78,15 @@
       <div id="messenger-button" class="chat-button" onclick="openMessenger()">
         <img src="https://cdn-icons-png.flaticon.com/128/3670/3670042.png" alt="Messenger" width="30px" height="30px">
       </div>
+      <div id="facebook-button" class="chat-button" onclick="openFacebook()">
+        <img src="https://cdn-icons-png.flaticon.com/128/3670/3670032.png" alt="Facebook" width="30px" height="30px">
+      </div>
       <div class="close-btn chat-button" onclick="togglePopup()">
         <i class="fas fa-times" style="color: white;"></i>
       </div>
   </div>
 
   <script>
-    // ฟังก์ชันเปิด/ปิดป๊อปอัพ
     function togglePopup() {
       const popup = document.getElementById('chat-popup');
       popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'flex' : 'none';
@@ -91,17 +95,21 @@
     // แสดงป๊อปอัพเมื่อคลิกปุ่มหลัก
     document.getElementById('main-button').addEventListener('click', togglePopup);
 
-    // ฟังก์ชันเปิดลิงค์ Line
     function openLine() {
       const lineId = "wee433021012"; // ใส่ Line ID ของคุณ
       const url = "https://line.me/ti/p/~" + lineId;
       window.open(url, "_blank");
     }
 
-    // ฟังก์ชันเปิดลิงค์ Messenger
     function openMessenger() {
       const messengerId = "kruwee.3s"; // ใส่ Facebook Messenger ID ของคุณ
       const url = "https://www.messenger.com/t/" + messengerId;
+      window.open(url, "_blank");
+    }
+
+    function openFacebook() {
+      const facebookId = "DewtaBlogs"; // ใส่ Facebook ID ของคุณ
+      const url = "https://www.facebook.com/" + facebookId;
       window.open(url, "_blank");
     }
   </script>
