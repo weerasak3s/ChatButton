@@ -3,10 +3,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat Popup</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <style>
-
-    @import url('https://fonts.googleapis.com/css2?family=K2D&family=Kanit&display=swap');
 
     /* ปุ่มหลัก */
     #main-button {
@@ -28,87 +26,14 @@
 
     /* ป๊อปอัพ */
     #chat-popup {
-      max-width: 350px;
-      background-color: #FAFAFA;
+      background-color: transparent;
       position: fixed;
       right: 20px;
       bottom: 100px;
       z-index: 999;
-      border-radius: 15px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
       display: none;
       flex-direction: column;
-      overflow: hidden;
-      border: 1px solid #ccc;
-      padding-bottom: 20px;
-      font-family: "K2D", sans-serif;
-    }
-
-    /* ส่วนหัวของป๊อปอัพ */
-    #chat-popup-header {
-      background-color: #0799ec;
-      padding: 10px;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    /* ข้อความส่วนหัวพร้อมโลโก้ */
-    #chat-popup-header img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    #chat-popup-header p {
-      margin: 0;
-    }
-
-    /* เนื้อหาภายในป๊อปอัพ */
-    #chat-popup-content {
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      margin-top: 10px;
-    }
-
-    /* ข้อความ */
-    #chat-popup-content p {
-      border: 1px solid #0084FF;
-      border-radius: 0px 10px 10px 10px;
-      background-color: #E6F4FF;
-      padding: 15px;
-      margin: 0;
-      font-size: 14px;
-      color: #333;
-      margin-left: 40px; /* เว้นที่สำหรับไอคอน */
-    }
-
-    /* ไอคอนในกล่องข้อความ */
-    #chat-popup-content img {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      position: absolute;
-      top: 15px;
-      left: 10px;
-    }
-
-    /* ส่วนด้านล่างป๊อปอัพ */
-    #chat-popup-footer {
-      padding: 10px;
-      display: flex;
-      justify-content: center;
       gap: 10px;
-    }
-
-    .chat-popup-footer{
-      padding: 10px;
-      text-align: center;
-      justify-content: center;
     }
 
     /* สไตล์ปุ่มแชท */
@@ -120,6 +45,8 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      background-color: #fff;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     #line-button {
@@ -130,122 +57,54 @@
       background-color: #0084FF;
     }
 
-    h3{
-      margin: 0;
+    .close-btn {
+      background-color: #FF6B6B;
     }
 
-    .close-btn{
-      font-size: 2.5rem;
-      cursor: pointer;
-    }
-
-    /* สไตล์สำหรับ tooltip */
-#tooltip {
-  display: none;
-  position: fixed;
-  background-color: #333;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  z-index: 1100;
-}
   </style>
 </head>
 <body>
 
   <!-- ปุ่มหลัก -->
-  <div id="main-button" >
-    <!-- โลโก้ปุ่มหลัก -->
-    <img src="https://cdn-icons-png.flaticon.com/128/1041/1041916.png" alt="Profile" style="border-radius: 50%; width: 60px; height: 60px;">
-  </div>
-<!-- Tooltip -->
-<div id="tooltip">ติดต่อสอบถาม</div>
+  <div id="main-button"></div>
 
   <!-- ป๊อปอัพ -->
   <div id="chat-popup">
-    <div id="chat-popup-header">
-      <div style="display: flex; align-items: center;">
-        <!-- โลโก้ส่วนหัวด้านบน -->
-        <img src="https://weerasak3s.github.io/images-Project/logo-dewtablog.png" alt="Logo"> 
-        <div>
-          <h3>DewtaBlog</h3>
-          <p>โดยทั่วไปจะตอบกลับทันที..</p>
-        </div>
-      </div>
-      <div class="close-btn" onclick="togglePopup()">&times;</div>
-    </div>
-    <div id="chat-popup-content">
-      <!-- โลโก้ขนาดเล็กหน้ากล่องข้อความ -->
-      <img src="https://weerasak3s.github.io/images-Project/logo-dewtablog.png" alt="Logo"> 
-      <!-- กล่องข้อความต้อนรับ -->
-      <p>สวัสดี! 😀<br> เราสามารถช่วยคุณได้อย่างไร?<br> ส่งข้อความถึงเราทันทีเพื่อรับความช่วยเหลือ</p>
-    </div>
-    <div class="chat-popup-footer">
-      <h3>เลือกช่องทางการสนทนา :</h3>
-    </div>
-    <div id="chat-popup-footer">
       <div id="line-button" class="chat-button" onclick="openLine()">
-        <img src="https://cdn-icons-png.flaticon.com/128/3670/3670089.png" alt="Line" width="50px" height="50px">
+        <img src="https://cdn-icons-png.flaticon.com/128/3670/3670089.png" alt="Line" width="30px" height="30px">
       </div>
       <div id="messenger-button" class="chat-button" onclick="openMessenger()">
-        <img src="https://cdn-icons-png.flaticon.com/128/3670/3670042.png" alt="Messenger" width="50px" height="50px">
+        <img src="https://cdn-icons-png.flaticon.com/128/3670/3670042.png" alt="Messenger" width="30px" height="30px">
       </div>
-      <div id="facebook-button" class="chat-button" onclick="openFacebook()">
-        <img src="https://cdn-icons-png.flaticon.com/128/3670/3670032.png" alt="facebook" width="50px" height="50px">
+      <div class="close-btn chat-button" onclick="togglePopup()">
+        <i class="fas fa-times" style="color: white;"></i>
       </div>
-    </div>
   </div>
 
   <script>
-const mainButton = document.getElementById('main-button');
-const tooltip = document.getElementById('tooltip');
-
-mainButton.addEventListener('mouseover', function (event) {
-  tooltip.style.display = 'block';
-  tooltip.style.left = `${event.pageX - tooltip.offsetWidth - 10}px`; // วางตำแหน่งทางด้านซ้ายของเมาส์
-  tooltip.style.top = `${event.pageY + 10}px`;
-});
-
-mainButton.addEventListener('mousemove', function (event) {
-  tooltip.style.left = `${event.pageX - tooltip.offsetWidth - 10}px`; // วางตำแหน่งทางด้านซ้ายของเมาส์
-  tooltip.style.top = `${event.pageY + 10}px`;
-});
-
-mainButton.addEventListener('mouseout', function () {
-  tooltip.style.display = 'none';
-});
-
-
-
+    // ฟังก์ชันเปิด/ปิดป๊อปอัพ
     function togglePopup() {
       const popup = document.getElementById('chat-popup');
-      popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
+      popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'flex' : 'none';
     }
 
-    
     // แสดงป๊อปอัพเมื่อคลิกปุ่มหลัก
     document.getElementById('main-button').addEventListener('click', togglePopup);
 
+    // ฟังก์ชันเปิดลิงค์ Line
     function openLine() {
-      const lineId = "wee433021012"; // xxxxxxxx ใส่ Line ID ของคุณ
+      const lineId = "wee433021012"; // ใส่ Line ID ของคุณ
       const url = "https://line.me/ti/p/~" + lineId;
       window.open(url, "_blank");
     }
 
+    // ฟังก์ชันเปิดลิงค์ Messenger
     function openMessenger() {
-      const messengerId = "kruwee.3s"; // xxxxxxxx ใส่ Facebook Messenger ID ของคุณ
+      const messengerId = "kruwee.3s"; // ใส่ Facebook Messenger ID ของคุณ
       const url = "https://www.messenger.com/t/" + messengerId;
-      window.open(url, "_blank");
-    }
-
-    function openFacebook() {
-      const facebookId = "kruwee.3s"; // xxxxxxxx ใส่ Facebook ID ของคุณ
-      const url = "https://www.facebook.com/" + facebookId;
       window.open(url, "_blank");
     }
   </script>
 
 </body>
 </html>
-
